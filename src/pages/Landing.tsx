@@ -31,13 +31,13 @@ const Landing = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" asChild className="bg-gradient-brand hover:opacity-90 transition-opacity shadow-brand">
+            <Button size="lg" asChild className="bg-gradient-brand hover:opacity-90 transition-opacity shadow-brand text-white">
               <Link to="/jobs" className="flex items-center">
                 Найти вакансии
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button size="lg" variant="outline" asChild className="border-2 border-accent text-accent hover:bg-accent hover:text-white">
               <Link to="/register">
                 Разместить вакансию
               </Link>
@@ -77,9 +77,9 @@ const Landing = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="border-0 shadow-card hover:shadow-card-hover transition-all duration-300 bg-gradient-card">
+            <Card className="border-0 shadow-card hover:shadow-accent transition-all duration-300 bg-gradient-card">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-gradient-brand rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-gradient-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-accent">
                   <Target className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Точный поиск</h3>
@@ -89,9 +89,9 @@ const Landing = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-0 shadow-card hover:shadow-card-hover transition-all duration-300 bg-gradient-card">
+            <Card className="border-0 shadow-card hover:shadow-accent transition-all duration-300 bg-gradient-card">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-gradient-brand rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-gradient-brand rounded-full flex items-center justify-center mx-auto mb-6 shadow-brand">
                   <Shield className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Безопасность</h3>
@@ -101,10 +101,10 @@ const Landing = () => {
               </CardContent>
             </Card>
             
-            <Card className="border-0 shadow-card hover:shadow-card-hover transition-all duration-300 bg-gradient-card">
+            <Card className="border-0 shadow-card hover:shadow-accent transition-all duration-300 bg-gradient-card">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-gradient-brand rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Briefcase className="h-8 w-8 text-white" />
+                <div className="w-16 h-16 bg-warning text-warning-foreground rounded-full flex items-center justify-center mx-auto mb-6 shadow-accent">
+                  <Briefcase className="h-8 w-8" />
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Карьерный рост</h3>
                 <p className="text-muted-foreground">
@@ -169,7 +169,7 @@ const Landing = () => {
           <p className="text-xl mb-8 opacity-90">
             Присоединяйтесь к тысячам специалистов, которые уже нашли работу через HireHaven
           </p>
-          <Button size="lg" variant="secondary" asChild className="bg-white text-primary hover:bg-white/90">
+          <Button size="lg" variant="secondary" asChild className="bg-warning text-warning-foreground hover:bg-warning/90 font-semibold border-0 shadow-lg">
             <Link to="/register" className="flex items-center">
               Начать сейчас
               <ArrowRight className="ml-2 h-5 w-5" />

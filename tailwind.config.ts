@@ -84,12 +84,14 @@ export default {
 			backgroundImage: {
 				'gradient-brand': 'var(--gradient-brand)',
 				'gradient-hero': 'var(--gradient-hero)',
-				'gradient-card': 'var(--gradient-card)'
+				'gradient-card': 'var(--gradient-card)',
+				'gradient-accent': 'var(--gradient-accent)'
 			},
 			boxShadow: {
 				'brand': 'var(--shadow-brand)',
 				'card': 'var(--shadow-card)',
-				'card-hover': 'var(--shadow-card-hover)'
+				'card-hover': 'var(--shadow-card-hover)',
+				'accent': 'var(--shadow-accent)'
 			},
 			transitionTimingFunction: {
 				'smooth': 'var(--transition-smooth)',

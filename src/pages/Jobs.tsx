@@ -129,7 +129,7 @@ const Jobs = () => {
                   </SelectContent>
                 </Select>
                 
-                <Button className="bg-gradient-brand hover:opacity-90 transition-opacity">
+                <Button className="bg-gradient-brand hover:opacity-90 transition-opacity text-white shadow-brand">
                   <Search className="h-4 w-4 mr-2" />
                   Найти
                 </Button>
@@ -148,7 +148,7 @@ const Jobs = () => {
                   </SelectContent>
                 </Select>
                 
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" className="border-accent text-accent hover:bg-accent hover:text-white">
                   <Filter className="h-4 w-4 mr-2" />
                   Фильтры
                 </Button>
@@ -217,7 +217,7 @@ const Jobs = () => {
                       <span>{job.experience}</span>
                     </div>
                     
-                    <Button size="sm" className="bg-gradient-brand hover:opacity-90 transition-opacity">
+                    <Button size="sm" className="bg-gradient-accent hover:opacity-90 transition-opacity text-white shadow-accent">
                       Откликнуться
                       <ChevronRight className="h-4 w-4 ml-1" />
                     </Button>
@@ -229,7 +229,7 @@ const Jobs = () => {
           
           {/* Load More */}
           <div className="text-center mt-12">
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary hover:text-white">
               Показать больше вакансий
             </Button>
           </div>
