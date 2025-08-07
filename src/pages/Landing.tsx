@@ -4,10 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/ui/navigation";
 import { ArrowRight, Users, Building2, MapPin, Star, CheckCircle, Briefcase, Target, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
-
 const Landing = () => {
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* Hero Section */}
@@ -70,7 +68,7 @@ const Landing = () => {
       <section className="py-20 px-4 bg-secondary/30">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Почему выбирают HireHaven?</h2>
+            <h2 className="text-4xl font-bold mb-4">Почему выбирают именно нас?</h2>
             <p className="text-xl text-muted-foreground">
               Мы делаем поиск работы простым и эффективным
             </p>
@@ -183,15 +181,13 @@ const Landing = () => {
         <div className="container mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-6">
             <Building2 className="h-6 w-6 text-primary" />
-            <span className="text-lg font-bold">HireHaven</span>
+            <span className="text-lg font-bold">Бизнес сфера</span>
           </div>
           <p className="text-muted-foreground">
             © 2024 HireHaven. Все права защищены.
           </p>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Landing;
