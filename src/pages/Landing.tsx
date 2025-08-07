@@ -183,9 +183,7 @@ const Landing = () => {
             <Building2 className="h-6 w-6 text-primary" />
             <span className="text-lg font-bold">Бизнес сфера</span>
           </div>
-          <p className="text-muted-foreground">
-            © 2024 HireHaven. Все права защищены.
-          </p>
+          <p className="text-muted-foreground">© 2024 Бизнес сфера. Все права защищены.</p>
         </div>
       </footer>
     </div>;
