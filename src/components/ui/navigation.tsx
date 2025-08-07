@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { LogIn, UserPlus, Home, Search, Building2 } from "lucide-react";
+import { LogIn, UserPlus, Home, Search, Building2, User } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 const Navigation = () => {
@@ -33,6 +33,15 @@ const Navigation = () => {
           >
             <Search className="h-4 w-4" />
             <span>Вакансии</span>
+          </Link>
+          <Link 
+            to="/profile" 
+            className={`flex items-center space-x-1 text-sm font-medium transition-colors hover:text-primary ${
+              location.pathname === '/profile' ? 'text-primary' : 'text-muted-foreground'
+            }`}
+          >
+            <User className="h-4 w-4" />
+            <span>Профиль</span>
           </Link>
         </div>
         
