@@ -4,80 +4,90 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/ui/navigation";
-import { Search, MapPin, Briefcase, Clock, Building2, Heart, Filter, ChevronRight } from "lucide-react";
+import { Search, MapPin, Briefcase, Clock, Building2, Heart, Filter, ChevronRight, Star } from "lucide-react";
 import { useState } from "react";
 
-const Jobs = () => {
+const Tutors = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [location, setLocation] = useState("");
   const [experience, setExperience] = useState("");
   const [employment, setEmployment] = useState("");
 
-  const mockJobs = [
+  const mockTutors = [
     {
       id: 1,
-      title: "Frontend разработчик (React)",
-      company: "Яндекс",
+      name: "Анна Петрова",
+      subject: "Математика",
       location: "Москва",
-      salary: "200 000 - 350 000 ₽",
-      employment: "Полная занятость",
-      experience: "3-6 лет",
-      description: "Разработка пользовательских интерфейсов с использованием React, TypeScript, Redux. Участие в проектировании архитектуры фронтенда.",
-      skills: ["React", "TypeScript", "Redux", "CSS3", "HTML5"],
-      posted: "2 дня назад",
-      logo: "🟡"
+      price: "1 500 ₽/час",
+      format: "Онлайн / Очно",
+      experience: "8 лет",
+      description: "Преподаю математику с 2015 года. Специализируюсь на подготовке к ЕГЭ и ОГЭ. Индивидуальный подход к каждому ученику.",
+      skills: ["ЕГЭ", "ОГЭ", "Алгебра", "Геометрия", "Высшая математика"],
+      rating: 4.9,
+      reviews: 47,
+      education: "МГУ, механико-математический факультет",
+      avatar: "👩‍🏫"
     },
     {
       id: 2,
-      title: "Python Backend разработчик",
-      company: "Сбербанк",
-      location: "Москва / Удаленно",
-      salary: "180 000 - 300 000 ₽",
-      employment: "Полная занятость",
-      experience: "3-6 лет",
-      description: "Разработка высоконагруженных микросервисов на Python. Работа с Django, PostgreSQL, Redis, Docker.",
-      skills: ["Python", "Django", "PostgreSQL", "Docker", "Redis"],
-      posted: "1 день назад",
-      logo: "🟢"
+      name: "Михаил Иванов",
+      subject: "Физика",
+      location: "Санкт-Петербург / Онлайн",
+      price: "1 800 ₽/час",
+      format: "Онлайн",
+      experience: "12 лет",
+      description: "Кандидат физико-математических наук. Помогаю студентам и школьникам понять сложные концепции физики.",
+      skills: ["ЕГЭ", "Механика", "Электродинамика", "Термодинамика", "Квантовая физика"],
+      rating: 5.0,
+      reviews: 89,
+      education: "СПбГУ, физический факультет, к.ф.-м.н.",
+      avatar: "👨‍🔬"
     },
     {
       id: 3,
-      title: "UX/UI дизайнер",
-      company: "Тинькофф",
+      name: "Елена Смирнова",
+      subject: "Английский язык",
       location: "Москва",
-      salary: "150 000 - 250 000 ₽",
-      employment: "Полная занятость",
-      experience: "2-5 лет",
-      description: "Создание пользовательских интерфейсов для мобильных и веб-приложений. Проведение UX-исследований.",
-      skills: ["Figma", "Sketch", "Prototyping", "User Research", "Design Systems"],
-      posted: "3 дня назад",
-      logo: "🟡"
+      price: "2 000 ₽/час",
+      format: "Очно / Онлайн",
+      experience: "6 лет",
+      description: "Сертифицированный преподаватель английского языка. IELTS 8.5, опыт работы в Великобритании.",
+      skills: ["IELTS", "TOEFL", "Разговорный английский", "Бизнес-английский", "Грамматика"],
+      rating: 4.8,
+      reviews: 62,
+      education: "МГЛУ, сертификат CELTA",
+      avatar: "👩‍💼"
     },
     {
       id: 4,
-      title: "DevOps инженер",
-      company: "Mail.ru Group",
-      location: "Москва",
-      salary: "220 000 - 400 000 ₽",
-      employment: "Полная занятость",
-      experience: "4-6 лет",
-      description: "Настройка и поддержка CI/CD пайплайнов, работа с Kubernetes, мониторинг и логирование систем.",
-      skills: ["Kubernetes", "Docker", "Jenkins", "AWS", "Terraform"],
-      posted: "5 дней назад",
-      logo: "🔵"
+      name: "Дмитрий Козлов",
+      subject: "Информатика",
+      location: "Новосибирск / Онлайн",
+      price: "1 600 ₽/час",
+      format: "Онлайн",
+      experience: "5 лет",
+      description: "Программист с опытом преподавания. Готовлю к ЕГЭ по информатике и обучаю основам программирования.",
+      skills: ["Python", "C++", "ЕГЭ Информатика", "Алгоритмы", "ООП"],
+      rating: 4.7,
+      reviews: 34,
+      education: "НГУ, факультет информационных технологий",
+      avatar: "👨‍💻"
     },
     {
       id: 5,
-      title: "Data Scientist",
-      company: "Ozon",
-      location: "Москва / Удаленно",
-      salary: "200 000 - 350 000 ₽",
-      employment: "Полная занятость",
-      experience: "3-5 лет",
-      description: "Анализ больших данных, построение ML-моделей для рекомендательных систем и прогнозирования.",
-      skills: ["Python", "Machine Learning", "SQL", "TensorFlow", "Pandas"],
-      posted: "1 неделю назад",
-      logo: "🟣"
+      name: "Ольга Васильева",
+      subject: "Химия",
+      location: "Екатеринбург / Онлайн",
+      price: "1 400 ₽/час",
+      format: "Онлайн / Очно",
+      experience: "10 лет",
+      description: "Преподаватель химии высшей категории. Специализируюсь на подготовке к ЕГЭ и олимпиадам по химии.",
+      skills: ["ЕГЭ", "Органическая химия", "Неорганическая химия", "Физическая химия", "Олимпиады"],
+      rating: 4.9,
+      reviews: 73,
+      education: "УрФУ, химический факультет",
+      avatar: "👩‍🔬"
     }
   ];
 
@@ -89,8 +99,8 @@ const Jobs = () => {
         <div className="container mx-auto">
           {/* Search Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">Поиск вакансий</h1>
-            <p className="text-muted-foreground">Найдено {mockJobs.length} вакансий</p>
+            <h1 className="text-3xl font-bold mb-2">Поиск репетиторов</h1>
+            <p className="text-muted-foreground">Найдено {mockTutors.length} репетиторов</p>
           </div>
           
           {/* Search Form */}
@@ -100,7 +110,7 @@ const Jobs = () => {
                 <div className="relative">
                   <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input 
-                    placeholder="Должность, ключевые слова"
+                    placeholder="Предмет, имя репетитора"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-10"
@@ -119,13 +129,13 @@ const Jobs = () => {
                 
                 <Select value={experience} onValueChange={setExperience}>
                   <SelectTrigger>
-                    <SelectValue placeholder="Опыт работы" />
+                    <SelectValue placeholder="Опыт преподавания" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="no-experience">Без опыта</SelectItem>
                     <SelectItem value="1-3">1-3 года</SelectItem>
                     <SelectItem value="3-6">3-6 лет</SelectItem>
-                    <SelectItem value="6+">Более 6 лет</SelectItem>
+                    <SelectItem value="6-10">6-10 лет</SelectItem>
+                    <SelectItem value="10+">Более 10 лет</SelectItem>
                   </SelectContent>
                 </Select>
                 
@@ -138,13 +148,12 @@ const Jobs = () => {
               <div className="flex items-center gap-4 mt-4 pt-4 border-t border-border">
                 <Select value={employment} onValueChange={setEmployment}>
                   <SelectTrigger className="w-48">
-                    <SelectValue placeholder="Тип занятости" />
+                    <SelectValue placeholder="Формат занятий" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="full-time">Полная занятость</SelectItem>
-                    <SelectItem value="part-time">Частичная занятость</SelectItem>
-                    <SelectItem value="remote">Удаленная работа</SelectItem>
-                    <SelectItem value="freelance">Фриланс</SelectItem>
+                    <SelectItem value="online">Онлайн</SelectItem>
+                    <SelectItem value="offline">Очно</SelectItem>
+                    <SelectItem value="both">Онлайн и очно</SelectItem>
                   </SelectContent>
                 </Select>
                 
@@ -158,32 +167,32 @@ const Jobs = () => {
           
           {/* Jobs List */}
           <div className="space-y-6">
-            {mockJobs.map((job) => (
-              <Card key={job.id} className="border-0 shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer group">
+            {mockTutors.map((tutor) => (
+              <Card key={tutor.id} className="border-0 shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer group">
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between">
                     <div className="flex items-start space-x-4">
-                      <div className="text-2xl">{job.logo}</div>
+                      <div className="text-3xl">{tutor.avatar}</div>
                       <div className="flex-1">
                         <CardTitle className="text-xl mb-2 group-hover:text-primary transition-colors">
-                          {job.title}
+                          {tutor.name}
                         </CardTitle>
                         <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-2">
                           <div className="flex items-center space-x-1">
                             <Building2 className="h-4 w-4" />
-                            <span>{job.company}</span>
+                            <span>{tutor.subject}</span>
                           </div>
                           <div className="flex items-center space-x-1">
                             <MapPin className="h-4 w-4" />
-                            <span>{job.location}</span>
+                            <span>{tutor.location}</span>
                           </div>
                           <div className="flex items-center space-x-1">
-                            <Clock className="h-4 w-4" />
-                            <span>{job.posted}</span>
+                            <Star className="h-4 w-4 text-warning fill-warning" />
+                            <span>{tutor.rating} ({tutor.reviews} отзывов)</span>
                           </div>
                         </div>
                         <div className="text-lg font-semibold text-primary mb-3">
-                          {job.salary}
+                          {tutor.price}
                         </div>
                       </div>
                     </div>
@@ -196,29 +205,33 @@ const Jobs = () => {
                 
                 <CardContent className="pt-0">
                   <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {job.description}
+                    {tutor.description}
                   </p>
                   
                   <div className="flex flex-wrap gap-2 mb-4">
-                    {job.skills.map((skill) => (
+                    {tutor.skills.map((skill) => (
                       <Badge key={skill} variant="secondary" className="text-xs">
                         {skill}
                       </Badge>
                     ))}
                   </div>
                   
+                  <div className="text-sm text-muted-foreground mb-4">
+                    <strong>Образование:</strong> {tutor.education}
+                  </div>
+                  
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                       <div className="flex items-center space-x-1">
                         <Briefcase className="h-4 w-4" />
-                        <span>{job.employment}</span>
+                        <span>{tutor.format}</span>
                       </div>
                       <span>•</span>
-                      <span>{job.experience}</span>
+                      <span>Опыт: {tutor.experience}</span>
                     </div>
                     
                     <Button size="sm" className="bg-gradient-accent hover:opacity-90 transition-opacity text-white shadow-accent">
-                      Откликнуться
+                      Связаться
                       <ChevronRight className="h-4 w-4 ml-1" />
                     </Button>
                   </div>
@@ -230,7 +243,7 @@ const Jobs = () => {
           {/* Load More */}
           <div className="text-center mt-12">
             <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary hover:text-white">
-              Показать больше вакансий
+              Показать больше репетиторов
             </Button>
           </div>
         </div>
@@ -239,4 +252,4 @@ const Jobs = () => {
   );
 };
 
-export default Jobs;
+export default Tutors;

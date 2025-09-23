@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Navigation from "@/components/ui/navigation";
 import { Link } from "react-router-dom";
-import { Eye, EyeOff, Building2, User, Briefcase } from "lucide-react";
+import { Eye, EyeOff, GraduationCap, User, BookOpen } from "lucide-react";
 import { useState } from "react";
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,11 +18,11 @@ const Register = () => {
           <Card className="border-0 shadow-card bg-gradient-card">
             <CardHeader className="text-center pb-8">
               <div className="flex items-center justify-center space-x-2 mb-4">
-                <Building2 className="h-8 w-8 text-primary" />
-                <span className="text-2xl font-bold bg-gradient-brand bg-clip-text text-transparent">Бизнес сфера</span>
+                <GraduationCap className="h-8 w-8 text-primary" />
+                <span className="text-2xl font-bold bg-gradient-brand bg-clip-text text-transparent">Репетиторы Онлайн</span>
               </div>
               <CardTitle className="text-2xl">Создать аккаунт</CardTitle>
-              <CardDescription>Присоединяйтесь к тысячам специалистов на Бизнес сфере</CardDescription>
+              <CardDescription>Присоединяйтесь к тысячам учеников и репетиторов</CardDescription>
             </CardHeader>
             
             <CardContent className="space-y-6">
@@ -33,16 +33,16 @@ const Register = () => {
                     <SelectValue placeholder="Выберите тип аккаунта" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="candidate">
+                    <SelectItem value="student">
                       <div className="flex items-center space-x-2">
                         <User className="h-4 w-4" />
-                        <span>Соискатель</span>
+                        <span>Ученик</span>
                       </div>
                     </SelectItem>
-                    <SelectItem value="employer">
+                    <SelectItem value="tutor">
                       <div className="flex items-center space-x-2">
-                        <Briefcase className="h-4 w-4" />
-                        <span>Работодатель</span>
+                        <BookOpen className="h-4 w-4" />
+                        <span>Репетитор</span>
                       </div>
                     </SelectItem>
                   </SelectContent>
@@ -65,9 +65,9 @@ const Register = () => {
                 <Input id="email" type="email" placeholder="ваш@email.com" className="transition-all duration-300 focus:shadow-card" />
               </div>
               
-              {userType === "employer" && <div className="space-y-2">
-                  <Label htmlFor="company">Название компании</Label>
-                  <Input id="company" placeholder="ООО Ваша компания" className="transition-all duration-300 focus:shadow-card" />
+              {userType === "tutor" && <div className="space-y-2">
+                  <Label htmlFor="subjects">Преподаваемые предметы</Label>
+                  <Input id="subjects" placeholder="Математика, Физика, Химия..." className="transition-all duration-300 focus:shadow-card" />
                 </div>}
               
               <div className="space-y-2">

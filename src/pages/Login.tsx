@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Navigation from "@/components/ui/navigation";
 import { Link } from "react-router-dom";
-import { Eye, EyeOff, Building2 } from "lucide-react";
+import { Eye, EyeOff, GraduationCap } from "lucide-react";
 import { useState } from "react";
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -16,12 +16,12 @@ const Login = () => {
           <Card className="border-0 shadow-card bg-gradient-card">
             <CardHeader className="text-center pb-8">
               <div className="flex items-center justify-center space-x-2 mb-4">
-                <Building2 className="h-8 w-8 text-primary" />
-                <span className="text-2xl font-bold bg-gradient-brand bg-clip-text text-transparent">Бизнес сфера</span>
+                <GraduationCap className="h-8 w-8 text-primary" />
+                <span className="text-2xl font-bold bg-gradient-brand bg-clip-text text-transparent">Репетиторы Онлайн</span>
               </div>
               <CardTitle className="text-2xl">Добро пожаловать!</CardTitle>
               <CardDescription>
-                Войдите в свой аккаунт, чтобы продолжить поиск работы
+                Войдите в свой аккаунт для поиска репетиторов или ведения занятий
               </CardDescription>
             </CardHeader>
             
