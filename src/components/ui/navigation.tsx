@@ -4,13 +4,13 @@ import { Link, useLocation } from "react-router-dom";
 const Navigation = () => {
   const location = useLocation();
   return <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
-          <Building2 className="h-8 w-8 text-primary" />
-          <span className="text-xl font-bold bg-gradient-brand bg-clip-text text-transparent">Репетиторы Онлайн</span>
+      <div className="container mx-auto px-4 h-14 sm:h-16 flex items-center justify-between">
+        <Link to="/" className="flex items-center space-x-1.5 sm:space-x-2">
+          <Building2 className="h-6 w-6 sm:h-8 sm:w-8 text-primary" />
+          <span className="text-base sm:text-xl font-bold bg-gradient-brand bg-clip-text text-transparent">Репетиторы Онлайн</span>
         </Link>
         
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-4 lg:space-x-8">
           <Link to="/" className={`flex items-center space-x-1 text-sm font-medium transition-colors hover:text-primary ${location.pathname === '/' ? 'text-primary' : 'text-muted-foreground'}`}>
             <Home className="h-4 w-4" />
             <span>Главная</span>
@@ -25,17 +25,18 @@ const Navigation = () => {
           </Link>
         </div>
         
-        <div className="flex items-center space-x-3">
-          <Button variant="ghost" size="sm" asChild>
-            <Link to="/login" className="flex items-center space-x-2">
-              <LogIn className="h-4 w-4" />
-              <span>Войти</span>
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          <Button variant="ghost" size="sm" asChild className="h-8 sm:h-9">
+            <Link to="/login" className="flex items-center space-x-1 sm:space-x-2">
+              <LogIn className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              <span className="text-xs sm:text-sm">Войти</span>
             </Link>
           </Button>
-          <Button size="sm" asChild className="bg-gradient-brand hover:opacity-90 transition-opacity">
-            <Link to="/register" className="flex items-center space-x-2">
-              <UserPlus className="h-4 w-4" />
-              <span>Регистрация</span>
+          <Button size="sm" asChild className="bg-gradient-brand hover:opacity-90 transition-opacity h-8 sm:h-9">
+            <Link to="/register" className="flex items-center space-x-1 sm:space-x-2">
+              <UserPlus className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              <span className="text-xs sm:text-sm hidden xs:inline">Регистрация</span>
+              <span className="text-xs xs:hidden">Регистр.</span>
             </Link>
           </Button>
         </div>

@@ -7,10 +7,11 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { User, Building2, Mail, Phone, MapPin, FileText, Award, Briefcase } from "lucide-react";
+import Navigation from "@/components/ui/navigation";
+import { User, BookOpen, Mail, Phone, MapPin, FileText, Award, GraduationCap } from "lucide-react";
 
 const Profile = () => {
-  const [userType, setUserType] = useState<"jobseeker" | "employer">("jobseeker");
+  const [userType, setUserType] = useState<"student" | "tutor">("student");
   const { toast } = useToast();
 
   const handleSave = () => {
@@ -21,215 +22,156 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
-      <nav className="bg-background/90 backdrop-blur-sm border-b border-border sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-2">
-            <Briefcase className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              JobPortal
-            </span>
-          </div>
-          <div className="flex items-center space-x-6">
-            <Button variant="ghost" onClick={() => window.location.href = "/"}>
-              Главная
-            </Button>
-            <Button variant="ghost" onClick={() => window.location.href = "/jobs"}>
-              Вакансии
-            </Button>
-            <Button variant="outline" onClick={() => window.location.href = "/login"}>
-              Выход
-            </Button>
-          </div>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-background">
+      <Navigation />
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-4xl mx-auto">
-          <Card className="shadow-elegant border-primary/10">
-            <CardHeader className="text-center">
-              <CardTitle className="text-3xl font-bold text-primary">
-                Мой Профиль
-              </CardTitle>
-              <CardDescription>
-                Управляйте своей информацией и настройками
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Tabs value={userType} onValueChange={(value) => setUserType(value as "jobseeker" | "employer")}>
-                <TabsList className="grid w-full grid-cols-2 mb-8">
-                  <TabsTrigger value="jobseeker" className="flex items-center gap-2">
-                    <User className="h-4 w-4" />
-                    Соискатель
+      <div className="pt-20 sm:pt-24 pb-8 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <div className="mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-3xl font-bold mb-2">Мой профиль</h1>
+            <p className="text-sm sm:text-base text-muted-foreground">Управляйте своим аккаунтом и настройками</p>
+          </div>
+
+          <Card className="border-0 shadow-card bg-gradient-card">
+            <CardHeader className="pb-3 sm:pb-4 p-4 sm:p-6">
+              <Tabs value={userType} onValueChange={(value) => setUserType(value as "student" | "tutor")}>
+                <TabsList className="grid w-full grid-cols-2 h-auto">
+                  <TabsTrigger value="student" className="flex items-center justify-center space-x-1.5 sm:space-x-2 text-xs sm:text-sm py-2 sm:py-2.5">
+                    <User className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                    <span className="hidden xs:inline">Профиль ученика</span>
+                    <span className="xs:hidden">Ученик</span>
                   </TabsTrigger>
-                  <TabsTrigger value="employer" className="flex items-center gap-2">
-                    <Building2 className="h-4 w-4" />
-                    Работодатель
+                  <TabsTrigger value="tutor" className="flex items-center justify-center space-x-1.5 sm:space-x-2 text-xs sm:text-sm py-2 sm:py-2.5">
+                    <BookOpen className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                    <span className="hidden xs:inline">Профиль репетитора</span>
+                    <span className="xs:hidden">Репетитор</span>
                   </TabsTrigger>
                 </TabsList>
-
-                <TabsContent value="jobseeker" className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="firstName">Имя</Label>
-                      <Input id="firstName" placeholder="Введите имя" />
+              </Tabs>
+            </CardHeader>
+            <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6">
+              <Tabs value={userType}>
+                <TabsContent value="student" className="space-y-4 sm:space-y-6 mt-0">
+                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="space-y-1.5 sm:space-y-2">
+                      <Label htmlFor="firstName" className="text-sm">Имя</Label>
+                      <Input id="firstName" defaultValue="Иван" className="h-10" />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="lastName">Фамилия</Label>
-                      <Input id="lastName" placeholder="Введите фамилию" />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <div className="relative">
-                        <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                        <Input id="email" type="email" placeholder="email@example.com" className="pl-10" />
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">Телефон</Label>
-                      <div className="relative">
-                        <Phone className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                        <Input id="phone" placeholder="+7 (999) 123-45-67" className="pl-10" />
-                      </div>
+                    <div className="space-y-1.5 sm:space-y-2">
+                      <Label htmlFor="lastName" className="text-sm">Фамилия</Label>
+                      <Input id="lastName" defaultValue="Иванов" className="h-10" />
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="location">Город</Label>
-                    <div className="relative">
-                      <MapPin className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                      <Input id="location" placeholder="Москва" className="pl-10" />
-                    </div>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="email" className="text-sm">Email</Label>
+                    <Input id="email" type="email" defaultValue="ivan@example.com" className="h-10" />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="position">Желаемая должность</Label>
-                    <Input id="position" placeholder="Frontend разработчик" />
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="phone" className="text-sm">Телефон</Label>
+                    <Input id="phone" type="tel" defaultValue="+7 (999) 999-99-99" className="h-10" />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="salary">Желаемая зарплата</Label>
-                    <Input id="salary" placeholder="от 100 000 руб." />
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="city" className="text-sm">Город</Label>
+                    <Input id="city" defaultValue="Москва" className="h-10" />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="experience">Опыт работы</Label>
-                    <Select>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Выберите опыт" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="no-experience">Без опыта</SelectItem>
-                        <SelectItem value="1-3">1-3 года</SelectItem>
-                        <SelectItem value="3-6">3-6 лет</SelectItem>
-                        <SelectItem value="6+">Более 6 лет</SelectItem>
-                      </SelectContent>
-                    </Select>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="interests" className="text-sm">Предметы для изучения</Label>
+                    <Textarea id="interests" placeholder="Математика, Физика, Химия..." defaultValue="Математика, Физика" className="min-h-20 sm:min-h-24" />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="skills">Ключевые навыки</Label>
-                    <div className="relative">
-                      <Award className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                      <Input id="skills" placeholder="React, TypeScript, Node.js" className="pl-10" />
-                    </div>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="goals" className="text-sm">Цели обучения</Label>
+                    <Textarea id="goals" placeholder="Расскажите о своих целях..." defaultValue="Подготовка к ЕГЭ по математике и физике" className="min-h-20 sm:min-h-24" />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="about">О себе</Label>
-                    <div className="relative">
-                      <FileText className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                      <Textarea 
-                        id="about" 
-                        placeholder="Расскажите о себе, своем опыте и достижениях..." 
-                        rows={6}
-                        className="pl-10 pt-10"
-                      />
-                    </div>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="bio" className="text-sm">О себе</Label>
+                    <Textarea id="bio" placeholder="Расскажите немного о себе..." defaultValue="Студент 11 класса, планирую поступать в технический вуз" className="min-h-20 sm:min-h-24" />
                   </div>
                 </TabsContent>
 
-                <TabsContent value="employer" className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="companyName">Название компании</Label>
-                      <Input id="companyName" placeholder="ООО Рога и копыта" />
+                <TabsContent value="tutor" className="space-y-4 sm:space-y-6 mt-0">
+                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="space-y-1.5 sm:space-y-2">
+                      <Label htmlFor="tutorFirstName" className="text-sm">Имя</Label>
+                      <Input id="tutorFirstName" defaultValue="Анна" className="h-10" />
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="companySize">Размер компании</Label>
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Выберите размер" />
+                    <div className="space-y-1.5 sm:space-y-2">
+                      <Label htmlFor="tutorLastName" className="text-sm">Фамилия</Label>
+                      <Input id="tutorLastName" defaultValue="Петрова" className="h-10" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="tutorEmail" className="text-sm">Email</Label>
+                    <Input id="tutorEmail" type="email" defaultValue="anna@example.com" className="h-10" />
+                  </div>
+
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="tutorPhone" className="text-sm">Телефон</Label>
+                    <Input id="tutorPhone" type="tel" defaultValue="+7 (999) 123-45-67" className="h-10" />
+                  </div>
+
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="subjects" className="text-sm">Преподаваемые предметы</Label>
+                    <Input id="subjects" defaultValue="Математика, Алгебра, Геометрия" className="h-10" />
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="space-y-1.5 sm:space-y-2">
+                      <Label htmlFor="experience" className="text-sm">Опыт (лет)</Label>
+                      <Input id="experience" type="number" defaultValue="8" className="h-10" />
+                    </div>
+                    <div className="space-y-1.5 sm:space-y-2">
+                      <Label htmlFor="price" className="text-sm">Цена (₽/час)</Label>
+                      <Input id="price" type="number" defaultValue="1500" className="h-10" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="education" className="text-sm">Образование</Label>
+                    <Input id="education" defaultValue="МГУ, механико-математический факультет" className="h-10" />
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="space-y-1.5 sm:space-y-2">
+                      <Label htmlFor="format" className="text-sm">Формат занятий</Label>
+                      <Select defaultValue="both">
+                        <SelectTrigger className="h-10">
+                          <SelectValue />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="startup">Стартап (1-10)</SelectItem>
-                          <SelectItem value="small">Малая (11-50)</SelectItem>
-                          <SelectItem value="medium">Средняя (51-200)</SelectItem>
-                          <SelectItem value="large">Крупная (200+)</SelectItem>
+                          <SelectItem value="online">Онлайн</SelectItem>
+                          <SelectItem value="offline">Очно</SelectItem>
+                          <SelectItem value="both">Онлайн и очно</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="industry">Отрасль</Label>
-                      <Input id="industry" placeholder="IT, Финансы, Производство..." />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="website">Сайт компании</Label>
-                      <Input id="website" placeholder="https://company.com" />
+
+                    <div className="space-y-1.5 sm:space-y-2">
+                      <Label htmlFor="tutorCity" className="text-sm">Город</Label>
+                      <Input id="tutorCity" defaultValue="Москва" className="h-10" />
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="companyEmail">Email компании</Label>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                      <Input id="companyEmail" type="email" placeholder="hr@company.com" className="pl-10" />
-                    </div>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="tutorBio" className="text-sm">О себе и методике</Label>
+                    <Textarea id="tutorBio" placeholder="Расскажите о своем опыте..." defaultValue="Преподаю математику с 2015 года. Специализируюсь на подготовке к ЕГЭ и ОГЭ. Индивидуальный подход к каждому ученику." className="min-h-24 sm:min-h-32" />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="companyPhone">Телефон компании</Label>
-                    <div className="relative">
-                      <Phone className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                      <Input id="companyPhone" placeholder="+7 (495) 123-45-67" className="pl-10" />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="companyLocation">Адрес компании</Label>
-                    <div className="relative">
-                      <MapPin className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                      <Input id="companyLocation" placeholder="г. Москва, ул. Тверская, 1" className="pl-10" />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="contactPerson">Контактное лицо</Label>
-                    <Input id="contactPerson" placeholder="Иван Иванов" />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="position">Должность</Label>
-                    <Input id="position" placeholder="HR-менеджер" />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="companyDescription">О компании</Label>
-                    <div className="relative">
-                      <FileText className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                      <Textarea 
-                        id="companyDescription" 
-                        placeholder="Расскажите о вашей компании, миссии, ценностях и преимуществах работы у вас..." 
-                        rows={6}
-                        className="pl-10 pt-10"
-                      />
-                    </div>
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <Label htmlFor="achievements" className="text-sm">Достижения</Label>
+                    <Textarea id="achievements" placeholder="Ваши достижения..." defaultValue="Средний балл учеников на ЕГЭ: 85+. 95% учеников поступают в желаемые вузы." className="min-h-20 sm:min-h-24" />
                   </div>
                 </TabsContent>
               </Tabs>
 
-              <div className="flex justify-end mt-8">
-                <Button onClick={handleSave} className="px-8">
+              <div className="flex justify-end mt-6 sm:mt-8">
+                <Button onClick={handleSave} className="bg-gradient-brand hover:opacity-90 transition-opacity shadow-brand px-6 sm:px-8 h-10 sm:h-11 w-full sm:w-auto">
                   Сохранить изменения
                 </Button>
               </div>

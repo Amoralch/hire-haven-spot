@@ -95,18 +95,18 @@ const Tutors = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <div className="pt-24 pb-8 px-4">
+      <div className="pt-20 sm:pt-24 pb-8 px-4">
         <div className="container mx-auto">
           {/* Search Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">Поиск репетиторов</h1>
-            <p className="text-muted-foreground">Найдено {mockTutors.length} репетиторов</p>
+          <div className="mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-3xl font-bold mb-2">Поиск репетиторов</h1>
+            <p className="text-sm sm:text-base text-muted-foreground">Найдено {mockTutors.length} репетиторов</p>
           </div>
           
           {/* Search Form */}
-          <Card className="mb-8 border-0 shadow-card bg-gradient-card">
-            <CardContent className="p-6">
-              <div className="grid md:grid-cols-4 gap-4">
+          <Card className="mb-6 sm:mb-8 border-0 shadow-card bg-gradient-card">
+            <CardContent className="p-4 sm:p-6">
+              <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
                 <div className="relative">
                   <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input 
@@ -128,7 +128,7 @@ const Tutors = () => {
                 </div>
                 
                 <Select value={experience} onValueChange={setExperience}>
-                  <SelectTrigger>
+                  <SelectTrigger className="h-10 sm:h-11">
                     <SelectValue placeholder="Опыт преподавания" />
                   </SelectTrigger>
                   <SelectContent>
@@ -139,15 +139,15 @@ const Tutors = () => {
                   </SelectContent>
                 </Select>
                 
-                <Button className="bg-gradient-brand hover:opacity-90 transition-opacity text-white shadow-brand">
+                <Button className="bg-gradient-brand hover:opacity-90 transition-opacity text-white shadow-brand h-10 sm:h-11 sm:col-span-2 md:col-span-1">
                   <Search className="h-4 w-4 mr-2" />
                   Найти
                 </Button>
               </div>
               
-              <div className="flex items-center gap-4 mt-4 pt-4 border-t border-border">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mt-4 pt-4 border-t border-border">
                 <Select value={employment} onValueChange={setEmployment}>
-                  <SelectTrigger className="w-48">
+                  <SelectTrigger className="w-full sm:w-48 h-10">
                     <SelectValue placeholder="Формат занятий" />
                   </SelectTrigger>
                   <SelectContent>
@@ -157,7 +157,7 @@ const Tutors = () => {
                   </SelectContent>
                 </Select>
                 
-                <Button variant="outline" size="sm" className="border-accent text-accent hover:bg-accent hover:text-white">
+                <Button variant="outline" size="sm" className="border-accent text-accent hover:bg-accent hover:text-white h-10">
                   <Filter className="h-4 w-4 mr-2" />
                   Фильтры
                 </Button>
@@ -165,50 +165,50 @@ const Tutors = () => {
             </CardContent>
           </Card>
           
-          {/* Jobs List */}
-          <div className="space-y-6">
+          {/* Tutors List */}
+          <div className="space-y-4 sm:space-y-6">
             {mockTutors.map((tutor) => (
               <Card key={tutor.id} className="border-0 shadow-card hover:shadow-card-hover transition-all duration-300 cursor-pointer group">
-                <CardHeader className="pb-4">
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-start space-x-4">
-                      <div className="text-3xl">{tutor.avatar}</div>
-                      <div className="flex-1">
-                        <CardTitle className="text-xl mb-2 group-hover:text-primary transition-colors">
+                <CardHeader className="pb-3 sm:pb-4 p-4 sm:p-6">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-start space-x-3 sm:space-x-4 flex-1 min-w-0">
+                      <div className="text-2xl sm:text-3xl flex-shrink-0">{tutor.avatar}</div>
+                      <div className="flex-1 min-w-0">
+                        <CardTitle className="text-lg sm:text-xl mb-2 group-hover:text-primary transition-colors truncate">
                           {tutor.name}
                         </CardTitle>
-                        <div className="flex items-center space-x-4 text-sm text-muted-foreground mb-2">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground mb-2">
                           <div className="flex items-center space-x-1">
-                            <Building2 className="h-4 w-4" />
-                            <span>{tutor.subject}</span>
+                            <Building2 className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                            <span className="truncate">{tutor.subject}</span>
                           </div>
                           <div className="flex items-center space-x-1">
-                            <MapPin className="h-4 w-4" />
-                            <span>{tutor.location}</span>
+                            <MapPin className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                            <span className="truncate">{tutor.location}</span>
                           </div>
                           <div className="flex items-center space-x-1">
-                            <Star className="h-4 w-4 text-warning fill-warning" />
-                            <span>{tutor.rating} ({tutor.reviews} отзывов)</span>
+                            <Star className="h-3 w-3 sm:h-4 sm:w-4 text-warning fill-warning flex-shrink-0" />
+                            <span className="whitespace-nowrap">{tutor.rating} ({tutor.reviews})</span>
                           </div>
                         </div>
-                        <div className="text-lg font-semibold text-primary mb-3">
+                        <div className="text-base sm:text-lg font-semibold text-primary mb-2 sm:mb-3">
                           {tutor.price}
                         </div>
                       </div>
                     </div>
                     
-                    <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0 hidden sm:flex">
                       <Heart className="h-4 w-4" />
                     </Button>
                   </div>
                 </CardHeader>
                 
-                <CardContent className="pt-0">
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
+                <CardContent className="pt-0 p-4 sm:p-6">
+                  <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4 leading-relaxed line-clamp-2 sm:line-clamp-none">
                     {tutor.description}
                   </p>
                   
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                     {tutor.skills.map((skill) => (
                       <Badge key={skill} variant="secondary" className="text-xs">
                         {skill}
@@ -216,21 +216,21 @@ const Tutors = () => {
                     ))}
                   </div>
                   
-                  <div className="text-sm text-muted-foreground mb-4">
+                  <div className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 line-clamp-1 sm:line-clamp-none">
                     <strong>Образование:</strong> {tutor.education}
                   </div>
                   
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
                       <div className="flex items-center space-x-1">
-                        <Briefcase className="h-4 w-4" />
+                        <Briefcase className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
                         <span>{tutor.format}</span>
                       </div>
-                      <span>•</span>
+                      <span className="hidden sm:inline">•</span>
                       <span>Опыт: {tutor.experience}</span>
                     </div>
                     
-                    <Button size="sm" className="bg-gradient-accent hover:opacity-90 transition-opacity text-white shadow-accent">
+                    <Button size="sm" className="bg-gradient-accent hover:opacity-90 transition-opacity text-white shadow-accent w-full sm:w-auto h-9 sm:h-8">
                       Связаться
                       <ChevronRight className="h-4 w-4 ml-1" />
                     </Button>
@@ -241,8 +241,8 @@ const Tutors = () => {
           </div>
           
           {/* Load More */}
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary hover:text-white">
+          <div className="text-center mt-8 sm:mt-12">
+            <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary hover:text-white w-full sm:w-auto h-11 sm:h-12">
               Показать больше репетиторов
             </Button>
           </div>

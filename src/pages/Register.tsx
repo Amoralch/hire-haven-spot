@@ -13,10 +13,10 @@ const Register = () => {
   return <div className="min-h-screen bg-background">
       <Navigation />
       
-      <div className="pt-32 pb-20 px-4">
+      <div className="pt-24 sm:pt-32 pb-12 sm:pb-20 px-4">
         <div className="container mx-auto max-w-md">
           <Card className="border-0 shadow-card bg-gradient-card">
-            <CardHeader className="text-center pb-8">
+            <CardHeader className="text-center pb-6 sm:pb-8 p-4 sm:p-6">
               <div className="flex items-center justify-center space-x-2 mb-4">
                 <GraduationCap className="h-8 w-8 text-primary" />
                 <span className="text-2xl font-bold bg-gradient-brand bg-clip-text text-transparent">Репетиторы Онлайн</span>
@@ -25,7 +25,7 @@ const Register = () => {
               <CardDescription>Присоединяйтесь к тысячам учеников и репетиторов</CardDescription>
             </CardHeader>
             
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6">
               <div className="space-y-2">
                 <Label htmlFor="userType">Тип аккаунта</Label>
                 <Select value={userType} onValueChange={setUserType}>
